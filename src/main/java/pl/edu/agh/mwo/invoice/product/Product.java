@@ -9,7 +9,7 @@ public abstract class Product {
 
 	private final BigDecimal taxPercent;
 
-	protected Product(String name, BigDecimal price, BigDecimal tax) {
+	protected Product(String name, BigDecimal price, BigDecimal tax) throws Exception {
 		this.name = name;
 		this.price = price;
 		this.taxPercent = tax;
@@ -20,14 +20,15 @@ public abstract class Product {
 	}
 
 	public BigDecimal getPrice() {
-		return null;
+		return this.price;
 	}
 
 	public BigDecimal getTaxPercent() {
-		return null;
+		return this.taxPercent;
 	}
 
 	public BigDecimal getPriceWithTax() {
-		return null;
+		BigDecimal result = this.price.multiply(this.taxPercent.add(new BigDecimal(1)));
+		return result;
 	}
 }
